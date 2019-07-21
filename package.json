@@ -1,0 +1,22 @@
+{
+  "name": "tropical",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GAV07/Tropical.git"
+  },
+  "author": "Gav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GAV07/Tropical/issues"
+  },
+  "homepage": "https://github.com/GAV07/Tropical#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
