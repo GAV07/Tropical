@@ -1,0 +1,28 @@
+{
+  "name": "tropical",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GAV07/Tropical.git"
+  },
+  "author": "Gav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GAV07/Tropical/issues"
+  },
+  "homepage": "https://github.com/GAV07/Tropical#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-imagemin": "^6.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "node-sass": "^4.12.0"
+  }
+}
