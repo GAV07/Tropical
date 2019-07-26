@@ -5,6 +5,7 @@ let cleanCss = require("gulp-clean-css")
 let sourceMaps = require("gulp-sourcemaps")
 let browserSync = require("browser-sync").create()
 let imageMin = require("gulp-imagemin")
+let ghpages = require("gh-pages")
 
 
   function style() {
@@ -46,8 +47,12 @@ let imageMin = require("gulp-imagemin")
     gulp.watch("src/img/*", img)
     return gulp.watch("src/css/app.scss", style)
   }
-  
 
+  function deploy() {
+    ghpages.publish("dist")
+  }
+  
+  exports.deploy = deploy
   exports.style = style
   exports.watch = watch
   exports.html = html
