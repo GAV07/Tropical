@@ -1,7 +1,8 @@
 let gulp = require("gulp")
 const { series } = require('gulp');
-let sass = require("gulp-sass")
 let cleanCss = require("gulp-clean-css")
+let postcss = require("gulp-postcss")
+let concat = require("gulp-concat")
 let sourceMaps = require("gulp-sourcemaps")
 let browserSync = require("browser-sync").create()
 let imageMin = require("gulp-imagemin")
@@ -9,14 +10,27 @@ let ghpages = require("gh-pages")
 
 
   function style() {
-    return gulp.src('src/css/app.scss')
+    return gulp.src([
+      "src/css/reset.css",
+      "src/css/typography.css",
+      "src/css/app.css"
+    ])
       .pipe(sourceMaps.init())
-      .pipe(sass())
+      .pipe(
+        postcss([
+          require("autoprefixer"),
+          require("postcss-preset-env") ({
+            stage: 1,
+            browsers: ["IE 11", "last 2 versions"]
+          })
+        ])
+        )
+      .pipe(concat("app.css"))
       .pipe(
         cleanCss({compatibility: "ie8"})
       )
       .pipe(sourceMaps.write())
-      .pipe(gulp.dest("dist"))
+      .pipe(gulp.dest("dist")) 
       .pipe(browserSync.stream())
   }
 
@@ -43,9 +57,9 @@ let ghpages = require("gh-pages")
       }
     })
     gulp.watch("src/*.html", html).on('change', browserSync.reload)
-    gulp.watch("src/css/fonts", fonts)
+    gulp.watch("src/css/fonts/*", fonts)
     gulp.watch("src/img/*", img)
-    return gulp.watch("src/css/app.scss", style)
+    return gulp.watch("src/css/*", style)
   }
 
   function deploy() {
